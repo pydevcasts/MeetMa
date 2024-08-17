@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
-
+from googletrans import Translator
 
 class GoogleMeetBot:
     def __init__(self, email, password):
@@ -14,6 +14,7 @@ class GoogleMeetBot:
         self.password = password
         self.driver = self.setup_driver()
         self.previous_subtitles = set()
+        self.translator = Translator()
 
     def setup_driver(self):
         options = Options()
@@ -31,14 +32,27 @@ class GoogleMeetBot:
         self.driver.get('https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/&ec=GAZAAQ')
         self.driver.find_element(By.ID, "identifierId").send_keys(self.email)
         self.driver.find_element(By.ID, "identifierNext").click()
-        password_field = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')))
-        password_field.send_keys(self.password)
-        WebDriverWait(self.driver, 10).until(EC.url_contains("google.com"))
+
+        try:
+            # Wait for the password field to be visible
+            password_field = WebDriverWait(self.driver, 20).until(
+                EC.visibility_of_element_located((By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input')))
+            password_field.send_keys(self.password)
+            
+            # Wait for the next button to be clickable
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.ID, "passwordNext"))).click()
+            
+            # Wait for the URL to contain google.com
+            WebDriverWait(self.driver, 10).until(EC.url_contains("google.com"))
+        except TimeoutException:
+            print("TimeoutException: Unable to find the password field.")
+        except Exception as e:
+            print(f"An error occurred during login: {e}")
+
 
     def turn_off_mic_cam(self):
         try:
-            time.sleep(5)  # Wait for the UI to load
+            time.sleep(0.5)  # Wait for the UI to load
             mic_button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, '//*[contains(concat(" ", @class, " "), concat(" ", "crqnQb", " "))]')))
             mic_button.click()
@@ -54,14 +68,27 @@ class GoogleMeetBot:
                     subtitles = WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, '//*[contains(concat(" ", @class, " "), concat(" ", "iOzk7", " "))]')))
                     subtitle_text = subtitles.text.strip()
+                    
                     if subtitle_text and subtitle_text not in self.previous_subtitles:
-                        f.write(subtitle_text + '\n' + "*" * 40 + '\n')
+                        # Write the original English subtitle
+                        f.write("English: " + subtitle_text + '\n' + "*" * 40 + '\n')
+                        
+                        # Translate the subtitle to Persian
+                        translated_text = self.translator.translate(subtitle_text, dest='fa').text
+                        if translated_text:
+                            f.write("Persian: " + translated_text + '\n' + "*" * 40 + '\n')
+                        else:
+                            print("Translation returned None or unexpected format.")
                         f.flush()
-                        print("*" * 30)
-                        print(subtitle_text)
-                        print("#" * 30)
+                        # print("*" * 30)
+                        # print("English: ", subtitle_text)
+                        # print("Persian: ", translated_text)
+                        # print("#" * 30)
+                        f.write(f"English: {subtitle_text}\nPersian: {translated_text}\n" + "*" * 40 + '\n')
+                        print(f"English: {subtitle_text}\nPersian: {translated_text}\n" + "#" * 30)
+                        
                         self.previous_subtitles.add(subtitle_text)
-                    time.sleep(1)
+                    time.sleep(0.5)
                 except TimeoutException:
                     print("TimeoutException: Element not found.")
                 except Exception as e:
@@ -78,16 +105,18 @@ class GoogleMeetBot:
 
         try:
             while True:
-                time.sleep(1)
+                time.sleep(0.5)
         except KeyboardInterrupt:
             print("Program terminated by user.")
         finally:
             self.driver.quit()
 
+
+
 if __name__ == "__main__":
     email = 'pydevcasts@gmail.com'
     password = 'Poing1981@'
-    meeting_link = 'https://meet.google.com/gkd-esge-uvu'
+    meeting_link = 'https://meet.google.com/ybq-azee-kss'
 
     bot = GoogleMeetBot(email, password)
     bot.start(meeting_link)
