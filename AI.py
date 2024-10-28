@@ -25,3 +25,23 @@ class AIResponse:
         except Exception as err:
             print(f"Other error occurred: {err}")
             return 'AI API error: Unable to get a response.'
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # pydevcasts@gmail.com
+        # Poing1981@
+        # https://meet.google.com/ikb-byyj-bui
