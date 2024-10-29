@@ -34,7 +34,7 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Google Meet Bot")
-        self.setGeometry(300, 300, 600, 600)
+        self.setGeometry(400, 400, 800, 800)
 
         # Assume you initialize translator and question_checker here
         self.translator = None  # Replace with actual translator
@@ -70,7 +70,7 @@ class MainWindow(QWidget):
         layout.addWidget(self.output_area)
 
         self.download_button = QPushButton("Download Text File", self)
-        self.download_button.setStyleSheet("background-color: tomato; font-size: 16px;")  # Change button color
+        self.download_button.setStyleSheet("background-color: green; font-size: 16px;")  # Change button color
         self.download_button.setFixedHeight(40)  # In
         self.download_button.clicked.connect(self.download_file)
         layout.addWidget(self.download_button)
