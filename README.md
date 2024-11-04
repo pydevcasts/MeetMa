@@ -52,3 +52,4 @@ The Google Meet Bot is a Python application designed to automate participation i
 ## Conclusion
 This Google Meet Bot is a versatile tool for anyone looking to improve their online meeting experience by automating subtitle capture and translation. It is particularly useful for non-English speakers or those who wish to keep a record of meeting discussions.
 
+## for sponsore than you can donate
