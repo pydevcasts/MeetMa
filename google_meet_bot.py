@@ -11,7 +11,7 @@ from question_checker import QuestionChecker
 from AI import AIResponse
 from auth import Authenticator  # Import the Authenticator class
 from controls import MeetControls  # Import the MeetControls class
-from subtitle_saver import SubtitleSaver  # Import the SubtitleSaver class
+from subtitle_saver_fa import SubtitleSaver  # Import the SubtitleSaver class
 
 class GoogleMeetBot:
     def __init__(self, email, password, api_key, ai_api_key, update_signal):
