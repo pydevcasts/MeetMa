@@ -16,8 +16,8 @@ setup(
             'meetma=src.main:main',  # Adjust based on your actual structure
         ],
     },
-    author='Siyamak Abasnezhad',
+    author='Siyamak Abasnezhad, Mahan Shirsavar',
     author_email='pydevcasts@gmail.com',
-    description='This project is a tool that extracts email addresses from a list of provided website links. Users can input multiple URLs, and the tool will scrape the pages to gather any email addresses found. Additionally, it allows users to send resumes to the extracted emails directly from the application.',
-    url='https://github.com/pydevcasts/ResumeRover',  # Your GitHub URL
+    description='Google Meet Bot is a Python application that automates participation in Google Meet meetings by extracting real-time subtitles, translating them, and detecting questions, enhancing users online meeting experience.',
+    url='https://github.com/pydevcasts/MeetMa',  # Your GitHub URL
 )
