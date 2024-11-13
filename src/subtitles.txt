@@ -1,0 +1,32 @@
+English: You
+Hello.
+********************
+Type: Statement
+********************
+Chinese: 你
+你好。
+********************
+English: siyamak abasnezhad
+Hello. Or are you?
+You
+What are you? Good.
+********************
+Type: Question
+********************
+Chinese: Siyamak Abasnezhad
+你好。還是你？
+你
+你是做什麼的？好的。
+********************
+English: You
+What are you? Good luck.
+siyamak abasnezhad
+Good luck.
+********************
+Type: Question
+********************
+Chinese: 你
+你是做什麼的？祝你好運。
+Siyamak Abasnezhad
+祝你好運。
+********************

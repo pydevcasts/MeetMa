@@ -32,8 +32,9 @@ class SubtitleSaver:
                         translated_text = self.translator.translate(subtitle_text, dest='fa')
                         f.write("Persian: " + translated_text + '\n' + "*" * 20 + '\n')
 
+
                         f.flush()
-                        self.update_signal.emit(f"English: {subtitle_text}\nType: {'Question' if self.question_checker.is_question(subtitle_text) else 'Statement'}\nPersian: {translated_text}")
+                        self.update_signal.emit(f"English: {subtitle_text}\nType: {'Question' if self.question_checker.is_question(subtitle_text) else 'Statement'}\nPersian: {translated_text}\n\n French: {translated_text}")
 
                         self.previous_subtitles.add(subtitle_text)
                     time.sleep(1)

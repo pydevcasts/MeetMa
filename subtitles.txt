@@ -1,0 +1,32 @@
+English: siyamak abasnezhad
+Hello.
+********************
+Type: Statement
+********************
+Persian: سیهاماک آبرس
+سلام
+********************
+English: siyamak abasnezhad
+Iron Man.
+You
+I
+********************
+Type: Statement
+********************
+Persian: سیهاماک آبرس
+مرد آهنین
+شما
+من
+********************
+English: You
+I What?
+siyamak abasnezhad
+so, you doing
+********************
+Type: Question
+********************
+Persian: شما
+من چی؟
+سیهاماک آبرس
+بنابراین ، شما انجام می دهید
+********************
