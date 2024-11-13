@@ -13,8 +13,8 @@ class SubtitleSaver_ch:
         self.previous_subtitles = set()
         self.update_signal = update_signal
 
-    def save_subtitles_ch(self):
-        with open('subtitles.txt', 'a', encoding='utf-8') as f:
+    def save_subtitles(self):
+        with open('subtitles3.txt', 'a', encoding='utf-8') as f:
             while True:
                 try:
                     subtitles = WebDriverWait(self.driver, 10).until(
@@ -30,12 +30,12 @@ class SubtitleSaver_ch:
                             f.write("Type: Statement" + '\n' + "*" * 20 + '\n')
 
                         translated_text_ch = self.translator.translate(subtitle_text, dest='zh-TW')
-                        f.write("Persian: " + translated_text_ch + '\n' + "*" * 20 + '\n')
+                        f.write("Chinese: " + translated_text_ch + '\n' + "*" * 20 + '\n')
 
                         
 
                         f.flush()
-                        self.update_signal.emit(f"English: {subtitle_text}\nType: {'Question' if self.question_checker.is_question(subtitle_text) else 'Statement'}\nChinese: {translated_text_ch}\n\n French: {translated_text2}")
+                        self.update_signal.emit(f"English: {subtitle_text}\nType: {'Question' if self.question_checker.is_question(subtitle_text) else 'Statement'}\nChinese: {translated_text_ch}\n\n")
 
                         self.previous_subtitles.add(subtitle_text)
                     time.sleep(1)

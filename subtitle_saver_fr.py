@@ -13,8 +13,8 @@ class SubtitleSaver_fr:
         self.previous_subtitles = set()
         self.update_signal = update_signal
 
-    def save_subtitles_fr(self):
-        with open('subtitles.txt', 'a', encoding='utf-8') as f:
+    def save_subtitles(self):
+        with open('subtitles2.txt', 'a', encoding='utf-8') as f:
             while True:
                 try:
                     subtitles = WebDriverWait(self.driver, 10).until(

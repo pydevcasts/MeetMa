@@ -153,12 +153,12 @@ class MeetingThread(QThread):
         if self.selected_language == "Farsi":
             subtitle_saver = SubtitleSaver(self.driver, self.translator, self.question_checker, self.update_output)
             subtitle_saver.save_subtitles()
-        elif self.selected_language == "French":
+        elif self.selected_language == "Frnch":
             subtitle_saver_fr = SubtitleSaver_fr(self.driver, self.translator, self.question_checker, self.update_output)
-            subtitle_saver_fr.save_subtitles_fr()
+            subtitle_saver_fr.save_subtitles()
         elif self.selected_language == "Chinese":
             subtitle_saver_ch = SubtitleSaver_ch(self.driver, self.translator, self.question_checker, self.update_output)
-            subtitle_saver_ch.save_subtitles_ch()
+            subtitle_saver_ch.save_subtitles()
 
 class MainWindow(QWidget):
     def __init__(self):
