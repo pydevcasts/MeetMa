@@ -76,8 +76,8 @@
 import unittest  
 from unittest.mock import patch, MagicMock  
 from google_meet_bot import GoogleMeetBot  
-from translator import TextTranslator
-from TextTranslator import translate_to_french
+# from translator import TextTranslator
+# from TextTranslator import translate_to_french
 
 class TestGoogleMeetBot(unittest.TestCase):  
 
